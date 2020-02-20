@@ -13,6 +13,7 @@ class MyAccessibilityService : AccessibilityService() {
 
     }
 
+    var lastWindowId = 0
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
         val source = event!!.source ?: return
         val ihUrlNodes =
@@ -23,16 +24,18 @@ class MyAccessibilityService : AccessibilityService() {
                 val urlText = (parent.text ?: "").toString()
 
                 if (urlText.contains("http://") || urlText.contains("https://")) {
-                    val ihCloseNodes =
-                        source.findAccessibilityNodeInfosByViewId("jp.naver.line.android:id/iab_header_close")
-                    if (ihCloseNodes.size > 0) {
-                        ihCloseNodes[0].performAction(AccessibilityNodeInfo.ACTION_CLICK)
+                    if (parent.windowId != lastWindowId) {
+                        val i = Intent(Intent.ACTION_VIEW, Uri.parse(urlText))
+                        i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                        applicationContext.startActivity(i)
+                        lastWindowId = parent.windowId
+                    } else {
+                        val ihCloseNodes =
+                            source.findAccessibilityNodeInfosByViewId("jp.naver.line.android:id/iab_header_close")
+                        if (ihCloseNodes.size > 0) {
+                            ihCloseNodes[0].performAction(AccessibilityNodeInfo.ACTION_CLICK)
+                        }
                     }
-
-                    Thread.sleep(200)
-                    val i = Intent(Intent.ACTION_VIEW, Uri.parse(urlText))
-                    i.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                    applicationContext.startActivity(i)
                 }
             } catch (e: Exception) {
                 Log.e("ERR", Log.getStackTraceString(e))
