@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ToBrowser4LINE</string>
+    <string name="accessibility_description">このユーザー補助サービスはLINEのアプリ内ブラウザのURLを取得し、別のブラウザで開きます。</string>
+    <string name="accessibility_disabled_message">ユーザー補助サービスが無効化されています。\nアプリを動作されるためにサービスを有効化してください。</string>
+    <string name="accessibility_enabled_message">ユーザー補助サービスが正しく有効化されています。</string>
+    <string name="accessibility_open_settings">設定画面を開く</string>
+</resources>
