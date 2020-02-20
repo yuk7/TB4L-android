@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">ToBrowser4LINE</string>
     <string name="accessibility_description">This accessibility will get LINE in-app-browser url and open it in other browsers.</string>
+    <string name="accessibility_disabled_message">The accessibility service is disabled.\nPlease enable it for the app to work.</string>
+    <string name="accessibility_enabled_message">The accessibility service is enabled.\nCongratulations!</string>
+    <string name="accessibility_open_settings">Open Settings</string>
 </resources>
