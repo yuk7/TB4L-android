@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">ToExtBrowser for LINE</string>
+    <string name="app_name">ToBrowser4LINE</string>
+    <string name="accessibility_description">This accessibility will get LINE in-app-browser url and open it in other browsers.</string>
 </resources>
